@@ -63,9 +63,7 @@ class SFRBoxFlowHandler(ConfigFlow, domain=DOMAIN):
             step_id="user", data_schema=data_schema, errors=errors
         )
 
-    async def async_step_choose_auth(
-        self, user_input: dict[str, str] | None = None
-    ) -> FlowResult:
+    async def async_step_choose_auth(self) -> FlowResult:
         """Handle a flow initialized by the user."""
         return self.async_show_menu(
             step_id="choose_auth",
@@ -105,9 +103,7 @@ class SFRBoxFlowHandler(ConfigFlow, domain=DOMAIN):
             step_id="auth", data_schema=data_schema, errors=errors
         )
 
-    async def async_step_skip_auth(
-        self, user_input: dict[str, str] | None = None
-    ) -> FlowResult:
+    async def async_step_skip_auth(self) -> FlowResult:
         """Skip authentication."""
         return self.async_create_entry(title="SFR Box", data=self._config)
 
