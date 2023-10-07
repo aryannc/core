@@ -20,10 +20,10 @@ from homeassistant.const import (
     CONF_NAME,
     CONF_SOURCE,
 )
-from homeassistant.core import HomeAssistant, split_entity_id
+from homeassistant.core import split_entity_id
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 import homeassistant.util.dt as dt_util
 from homeassistant.util.pil import draw_box
 
@@ -51,10 +51,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 
 def setup_platform(
-    hass: HomeAssistant,
     config: ConfigType,
-    add_entities: AddEntitiesCallback,
-    discovery_info: DiscoveryInfoType | None = None,
+    add_entities: AddEntitiesCallback
 ) -> None:
     """Set up the platform."""
     # Validate credentials by processing image.
