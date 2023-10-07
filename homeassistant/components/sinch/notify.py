@@ -23,7 +23,7 @@ from homeassistant.components.notify import (
 from homeassistant.const import CONF_API_KEY, CONF_SENDER
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 
 DOMAIN = "sinch"
 
@@ -49,9 +49,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 
 def get_service(
-    hass: HomeAssistant,
-    config: ConfigType,
-    discovery_info: DiscoveryInfoType | None = None,
+    config: ConfigType
 ) -> SinchNotificationService:
     """Get the Sinch notification service."""
     return SinchNotificationService(config)
