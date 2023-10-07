@@ -8,10 +8,9 @@ import voluptuous as vol
 
 from homeassistant.components.lock import PLATFORM_SCHEMA, LockEntity
 from homeassistant.const import ATTR_BATTERY_LEVEL, ATTR_DEVICE_ID, CONF_API_KEY
-from homeassistant.core import HomeAssistant
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 
 ATTR_SERIAL_NO = "serial"
 
@@ -19,10 +18,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({vol.Required(CONF_API_KEY): cv.string}
 
 
 def setup_platform(
-    hass: HomeAssistant,
     config: ConfigType,
     add_entities: AddEntitiesCallback,
-    discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
     """Set up the Sesame platform."""
     api_key = config.get(CONF_API_KEY)
