@@ -14,7 +14,7 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import STATE_OFF, STATE_ON, STATE_UNAVAILABLE, EntityCategory
-from homeassistant.core import HomeAssistant, State, callback
+from homeassistant.core import State, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import (
@@ -102,7 +102,6 @@ def generate_binary_sensors(entry: ConfigEntry) -> Iterable[SIABinarySensor]:
 
 
 async def async_setup_entry(
-    hass: HomeAssistant,
     entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
