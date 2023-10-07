@@ -21,9 +21,7 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_platform(
     hass: HomeAssistant,
-    config: ConfigType,
-    async_add_entities: AddEntitiesCallback,
-    discovery_info: DiscoveryInfoType | None = None,
+    async_add_entities: AddEntitiesCallback
 ) -> None:
     """Set up the Smarty Binary Sensor Platform."""
     smarty: Smarty = hass.data[DOMAIN]["api"]
