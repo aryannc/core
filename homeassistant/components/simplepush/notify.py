@@ -13,8 +13,7 @@ from homeassistant.components.notify import (
     BaseNotificationService,
 )
 from homeassistant.const import CONF_EVENT, CONF_PASSWORD
-from homeassistant.core import HomeAssistant
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import DiscoveryInfoType
 
 from .const import ATTR_ATTACHMENTS, ATTR_EVENT, CONF_DEVICE_KEY, CONF_SALT
 
@@ -22,8 +21,6 @@ _LOGGER = logging.getLogger(__name__)
 
 
 async def async_get_service(
-    hass: HomeAssistant,
-    config: ConfigType,
     discovery_info: DiscoveryInfoType | None = None,
 ) -> SimplePushNotificationService | None:
     """Get the Simplepush notification service."""
