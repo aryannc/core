@@ -267,7 +267,6 @@ class ScriptEntityConfig:
 
 
 async def _prepare_script_config(
-    hass: HomeAssistant,
     config: ConfigType,
 ) -> list[ScriptEntityConfig]:
     """Parse configuration and prepare script entity configuration."""
