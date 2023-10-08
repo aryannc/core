@@ -270,7 +270,6 @@ def legacy_row_to_compressed_state(
     row: Row,
     attr_cache: dict[str, dict[str, Any]],
     start_time: datetime | None,
-    entity_id: str | None = None,
 ) -> dict[str, Any]:
     """Convert a database row to a compressed state schema 31 and later."""
     comp_state = {
