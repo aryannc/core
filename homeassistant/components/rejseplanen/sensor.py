@@ -18,7 +18,7 @@ from homeassistant.const import CONF_NAME, UnitOfTime
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 import homeassistant.util.dt as dt_util
 
 _LOGGER = logging.getLogger(__name__)
@@ -76,10 +76,8 @@ def due_in_minutes(timestamp):
 
 
 def setup_platform(
-    hass: HomeAssistant,
     config: ConfigType,
     add_devices: AddEntitiesCallback,
-    discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
     """Set up the Rejseplanen transport sensor."""
     name = config[CONF_NAME]
