@@ -39,7 +39,7 @@ from homeassistant.helpers.trigger_template_entity import (
     TEMPLATE_ENTITY_BASE_SCHEMA,
     ManualTriggerEntity,
 )
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 
 _LOGGER = logging.getLogger(__name__)
 CONF_BODY_OFF = "body_off"
@@ -91,7 +91,6 @@ async def async_setup_platform(
     hass: HomeAssistant,
     config: ConfigType,
     async_add_entities: AddEntitiesCallback,
-    discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
     """Set up the RESTful switch."""
     resource: str = config[CONF_RESOURCE]
