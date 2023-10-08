@@ -19,11 +19,11 @@ from homeassistant.const import (
     STATE_IDLE,
     UnitOfDataRate,
 )
-from homeassistant.core import HomeAssistant
+
 from homeassistant.exceptions import PlatformNotReady
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -95,10 +95,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 
 def setup_platform(
-    hass: HomeAssistant,
     config: ConfigType,
-    add_entities: AddEntitiesCallback,
-    discovery_info: DiscoveryInfoType | None = None,
+    add_entities: AddEntitiesCallback
 ) -> None:
     """Set up the rtorrent sensors."""
     url = config[CONF_URL]
