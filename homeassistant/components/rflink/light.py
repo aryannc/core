@@ -17,7 +17,7 @@ from homeassistant.const import CONF_DEVICES, CONF_NAME, CONF_TYPE
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 
 from . import (
     CONF_ALIASES,
@@ -153,7 +153,6 @@ async def async_setup_platform(
     hass: HomeAssistant,
     config: ConfigType,
     async_add_entities: AddEntitiesCallback,
-    discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
     """Set up the Rflink light platform."""
     async_add_entities(devices_from_config(config))
