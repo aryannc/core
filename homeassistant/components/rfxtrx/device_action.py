@@ -9,9 +9,9 @@ from homeassistant.components.device_automation.exceptions import (
     InvalidDeviceAutomationConfig,
 )
 from homeassistant.const import CONF_DEVICE_ID, CONF_DOMAIN, CONF_TYPE
-from homeassistant.core import Context, HomeAssistant
+from homeassistant.core import HomeAssistant
 import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.typing import ConfigType, TemplateVarsType
+from homeassistant.helpers.typing import ConfigType
 
 from . import DATA_RFXOBJECT, DOMAIN
 from .helpers import async_get_device_object
@@ -95,8 +95,6 @@ async def async_validate_action_config(
 async def async_call_action_from_config(
     hass: HomeAssistant,
     config: ConfigType,
-    variables: TemplateVarsType,
-    context: Context | None,
 ) -> None:
     """Execute a device action."""
     config = ACTION_SCHEMA(config)
