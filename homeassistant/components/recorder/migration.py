@@ -202,7 +202,7 @@ def validate_db_schema(
 
 
 def _find_schema_errors(
-    hass: HomeAssistant, instance: Recorder, session_maker: Callable[[], Session]
+    instance: Recorder
 ) -> set[str]:
     """Find schema errors."""
     schema_errors: set[str] = set()
