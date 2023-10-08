@@ -77,7 +77,7 @@ async def validate_cloud_input(hass: core.HomeAssistant, data) -> dict[str, str]
 
 
 async def validate_local_input(
-    hass: core.HomeAssistant, data: Mapping[str, str]
+    data: Mapping[str, str]
 ) -> dict[str, str]:
     """Validate the user input allows us to connect to a local panel.
 
