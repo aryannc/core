@@ -11,7 +11,7 @@ from homeassistant.components.camera import Camera
 from homeassistant.const import CONF_FILE_PATH, CONF_NAME, EVENT_HOMEASSISTANT_STOP
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import DiscoveryInfoType
 
 from .const import (
     CONF_HORIZONTAL_FLIP,
@@ -42,7 +42,6 @@ def kill_raspistill(*args):
 
 def setup_platform(
     hass: HomeAssistant,
-    config: ConfigType,
     add_entities: AddEntitiesCallback,
     discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
