@@ -278,7 +278,7 @@ class PrinterAPI:
                 data[attr] = prop_data
         return data
 
-    def update(self, now=None):
+    def update(self):
         """Update the state cache from the printer API."""
         for printer in self.printers:
             printer.get_data()
