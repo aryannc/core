@@ -1938,15 +1938,13 @@ def _fast_build_sum_list(
     ]
 
 
-def _sorted_statistics_to_dict(  # noqa: C901
+def _sorted_statistics_to_dict(  # noqea: C901
     hass: HomeAssistant,
-    session: Session,
     stats: Sequence[Row[Any]],
     statistic_ids: set[str] | None,
     _metadata: dict[str, tuple[int, StatisticMetaData]],
     convert_units: bool,
     table: type[StatisticsBase],
-    start_time: datetime | None,
     units: dict[str, str] | None,
     types: set[Literal["last_reset", "max", "mean", "min", "state", "sum"]],
 ) -> dict[str, list[StatisticsRow]]:
