@@ -21,7 +21,7 @@ from homeassistant.const import (
 )
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -40,9 +40,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 
 def get_service(
-    hass: HomeAssistant,
-    config: ConfigType,
-    discovery_info: DiscoveryInfoType | None = None,
+    config: ConfigType
 ) -> SendgridNotificationService:
     """Get the SendGrid notification service."""
     return SendgridNotificationService(config)
