@@ -21,7 +21,7 @@ from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import entity_registry as er
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import get_capability
-from homeassistant.helpers.typing import ConfigType, TemplateVarsType
+from homeassistant.helpers.typing import ConfigType
 
 from .const import (
     ATTR_CYCLE,
@@ -108,7 +108,6 @@ async def async_get_actions(
 async def async_call_action_from_config(
     hass: HomeAssistant,
     config: ConfigType,
-    variables: TemplateVarsType,
     context: Context | None,
 ) -> None:
     """Execute a device action."""
