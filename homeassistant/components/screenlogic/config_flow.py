@@ -27,7 +27,7 @@ GATEWAY_MANUAL_ENTRY = "manual"
 PENTAIR_OUI = "00-C0-33"
 
 
-async def async_discover_gateways_by_unique_id(hass):
+async def async_discover_gateways_by_unique_id():
     """Discover gateways and return a dict of them by unique id."""
     discovered_gateways = {}
     try:
