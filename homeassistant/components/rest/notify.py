@@ -33,7 +33,7 @@ from homeassistant.core import HomeAssistant
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.httpx_client import get_async_client
 from homeassistant.helpers.template import Template
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 
 CONF_DATA = "data"
 CONF_DATA_TEMPLATE = "data_template"
@@ -75,7 +75,6 @@ _LOGGER = logging.getLogger(__name__)
 async def async_get_service(
     hass: HomeAssistant,
     config: ConfigType,
-    discovery_info: DiscoveryInfoType | None = None,
 ) -> RestNotificationService:
     """Get the RESTful notification service."""
     resource: str = config[CONF_RESOURCE]
