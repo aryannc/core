@@ -31,7 +31,7 @@ class RoonServer:
         self._roon_name_by_id = {}
         self._id_by_roon_name = {}
 
-    async def async_setup(self, tries=0):
+    async def async_setup(self):
         """Set up a roon server based on config parameters."""
 
         def get_roon_host():
