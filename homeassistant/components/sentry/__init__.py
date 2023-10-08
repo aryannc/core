@@ -128,8 +128,7 @@ def process_before_send(
     huuid: str,
     system_info: dict[str, bool | str],
     custom_components: dict[str, Integration],
-    event: dict[str, Any],
-    hint: dict[str, Any],
+    event: dict[str, Any]
 ):
     """Process a Sentry event before sending it to Sentry."""
     # Filter out handled events by default
