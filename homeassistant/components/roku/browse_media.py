@@ -219,7 +219,6 @@ def build_item_response(
 
 def item_payload(
     item: dict,
-    coordinator: RokuDataUpdateCoordinator,
     get_browse_image_url: GetBrowseImageUrlType,
 ) -> BrowseMedia:
     """Create response payload for a single media item.
