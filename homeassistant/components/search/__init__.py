@@ -16,7 +16,6 @@ from homeassistant.helpers import (
     entity_registry as er,
 )
 from homeassistant.helpers.entity import entity_sources as get_entity_sources
-from homeassistant.helpers.typing import ConfigType
 
 DOMAIN = "search"
 _LOGGER = logging.getLogger(__name__)
@@ -24,7 +23,7 @@ _LOGGER = logging.getLogger(__name__)
 CONFIG_SCHEMA = cv.empty_config_schema(DOMAIN)
 
 
-async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
+async def async_setup(hass: HomeAssistant) -> bool:
     """Set up the Search component."""
     websocket_api.async_register_command(hass, websocket_search_related)
     return True
