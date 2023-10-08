@@ -18,8 +18,7 @@ async def _async_reproduce_state(
     hass: HomeAssistant,
     state: State,
     *,
-    context: Context | None = None,
-    reproduce_options: dict[str, Any] | None = None,
+    context: Context | None = None
 ) -> None:
     """Reproduce a single state."""
     if (cur_state := hass.states.get(state.entity_id)) is None:
