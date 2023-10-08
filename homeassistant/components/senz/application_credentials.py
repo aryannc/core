@@ -3,10 +3,8 @@
 from aiosenz import AUTHORIZATION_ENDPOINT, TOKEN_ENDPOINT
 
 from homeassistant.components.application_credentials import AuthorizationServer
-from homeassistant.core import HomeAssistant
 
-
-async def async_get_authorization_server(hass: HomeAssistant) -> AuthorizationServer:
+async def async_get_authorization_server() -> AuthorizationServer:
     """Return authorization server."""
     return AuthorizationServer(
         authorize_url=AUTHORIZATION_ENDPOINT,
