@@ -457,9 +457,7 @@ def get_identifiers_from_device_tuple(
     return {(DOMAIN, *device_tuple)}  # type: ignore[arg-type]
 
 
-async def async_remove_config_entry_device(
-    hass: HomeAssistant, config_entry: ConfigEntry, device_entry: dr.DeviceEntry
-) -> bool:
+async def async_remove_config_entry_device() -> bool:
     """Remove config entry from a device.
 
     The actual cleanup is done in the device registry event
