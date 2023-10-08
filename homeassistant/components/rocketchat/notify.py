@@ -17,9 +17,8 @@ from homeassistant.components.notify import (
     BaseNotificationService,
 )
 from homeassistant.const import CONF_PASSWORD, CONF_ROOM, CONF_URL, CONF_USERNAME
-from homeassistant.core import HomeAssistant
 import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.typing import ConfigType
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -34,9 +33,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 
 def get_service(
-    hass: HomeAssistant,
     config: ConfigType,
-    discovery_info: DiscoveryInfoType | None = None,
 ) -> RocketChatNotificationService | None:
     """Return the notify service."""
 
