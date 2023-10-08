@@ -343,7 +343,7 @@ class ReolinkHost:
 
         await self._api.unsubscribe(sub_type=SubType.long_poll)
 
-    async def stop(self, event=None):
+    async def stop(self):
         """Disconnect the API."""
         if self._cancel_poll is not None:
             self._cancel_poll()
