@@ -2,6 +2,8 @@
 import asyncio
 from datetime import timedelta
 import logging
+import urllib.request
+import json
 
 from pyowm.commons.exceptions import APIRequestError, UnauthorizedError
 
@@ -9,11 +11,13 @@ from homeassistant.components.weather import (
     ATTR_CONDITION_CLEAR_NIGHT,
     ATTR_CONDITION_SUNNY,
 )
-from homeassistant.const import UnitOfTemperature
+from homeassistant.const import UnitOfTemperature, CONF_API_KEY
 from homeassistant.helpers import sun
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt as dt_util
 from homeassistant.util.unit_conversion import TemperatureConverter
+from homeassistant import config_entries
+
 
 from .const import (
     ATTR_API_CLOUDS,
@@ -103,6 +107,23 @@ class WeatherUpdateCoordinator(DataUpdateCoordinator):
             )
 
         return weather
+
+    async def _get_air_pollution_data(self, config_entry: config_entries.ConfigEntry):
+        """Fetch air pollution data from OpenWeatherMap."""
+        self._api_key = config_entry.data[CONF_API_KEY]
+        _LOGGER.error(f"API key: {self._api_key}")
+        base_url = "http://api.openweathermap.org/data/2.5/air_pollution"
+        url = f"{base_url}?lat={self._latitude}&lon={self._longitude}&appid={self._api_key}"
+
+        try:
+            loop = asyncio.get_running_loop()
+            response = await loop.run_in_executor(None, lambda: urllib.request.urlopen(url))
+            air_pollution_data = json.load(response)
+            print(f"AQI (Air Quality Index): {air_pollution_data['list'][0]['main']['aqi']}")
+            return air_pollution_data
+        except urllib.error.URLError as e:
+            _LOGGER.error("Failed to fetch air pollution data: %s", e)
+            return {}
 
     def _get_legacy_weather_and_forecast(self):
         """Get weather and forecast data from OWM."""
