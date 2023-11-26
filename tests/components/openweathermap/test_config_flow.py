@@ -1,5 +1,8 @@
 """Define tests for the OpenWeatherMap config flow."""
+import unittest
 from unittest.mock import MagicMock, patch
+import asyncio
+from openweathermap import WeatherUpdateCoordinator
 
 from pyowm.commons.exceptions import APIRequestError, UnauthorizedError
 
@@ -173,6 +176,58 @@ async def test_form_api_offline(hass: HomeAssistant) -> None:
         )
 
         assert result["errors"] == {"base": "invalid_api_key"}
+
+
+# Test OpenWeatherMap integration with an API call error:
+async def texst_openweathermap_api_call_error(hass: HomeAssistant) -> None:
+    mocked_owm = _create_mocked_owm(True)  # Modify the mocked OWM function as needed
+
+    with patch(
+        "pyowm.weatherapi25.weather_manager.WeatherManager",
+        return_value=mocked_owm,
+        side_effect=APIRequestError(""),
+    ):
+        result = await hass.config_entries.flow.async_init(
+            DOMAIN, context={"source": SOURCE_USER}, data=CONFIG
+        )
+
+        assert result["errors"] == {"base": "cannot_connect"}
+
+
+# Test OpenWeatherMap integration with an invalid API key (offline, i.e., OpenWeatherMap service is unavailable or cannot be reached):
+async def test_openweathermap_api_offline(hass: HomeAssistant) -> None:
+    mocked_owm = _create_mocked_owm(False)
+
+    with patch(
+        "homeassistant.components.openweathermap.config_flow.OWM",
+        return_value=mocked_owm,
+    ):
+        result = await hass.config_entries.flow.async_init(
+            DOMAIN, context={"source": SOURCE_USER}, data=CONFIG
+        )
+
+        assert result["errors"] == {"base": "invalid_api_key"}
+
+class TestYourClass(unittest.IsolatedAsyncioTestCase):
+    async def test_get_air_pollution_data(self):
+        config_entry_mock = MagicMock()
+        config_entry_mock.data = {'api_key': '76f843f4e2c57cb1b72d06c1a0fffb95'}
+        your_class_instance = YourClass()  # Instantiate class
+
+        with patch('urllib.request.urlopen') as urlopen_mock:
+            mock_response = MagicMock()
+            mock_response.read.return_value = '{"list":[{"main":{"aqi":2}}]}'  # Mocked response data
+            urlopen_mock.return_value.__enter__.return_value = mock_response
+
+            # Execute the method being tested
+            result = await your_class_instance._get_air_pollution_data(config_entry_mock)
+
+            # Assertions
+            urlopen_mock.assert_called_once()  # Check if urlopen was called
+            self.assertEqual(result['list'][0]['main']['aqi'], 2)  # Check if the result is as expected
+
+if __name__ == '__main__':
+    unittest.main()
 
 
 def _create_mocked_owm(is_api_online: bool):
